@@ -294,7 +294,7 @@ CREATE TABLE `llxna_actioncomm` (
   KEY `idx_actioncomm_percent` (`percent`),
   KEY `idx_actioncomm_ref` (`ref`,`entity`),
   KEY `idx_actioncomm_entity` (`entity`)
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,7 +359,7 @@ CREATE TABLE `llxna_actioncomm_resources` (
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_actioncomm_resources` (`fk_actioncomm`,`element_type`,`fk_element`),
   KEY `idx_actioncomm_resources_fk_element` (`fk_element`)
-) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8545,4 +8545,4 @@ CREATE TABLE `llxna_usergroup_user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-08 15:14:24
+-- Dump completed on 2024-05-08 15:17:49
