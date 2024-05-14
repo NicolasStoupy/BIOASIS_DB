@@ -2409,6 +2409,24 @@ CREATE TABLE `llxna_categorie_societe` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `llxna_categorie_ticket`
+--
+
+DROP TABLE IF EXISTS `llxna_categorie_ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `llxna_categorie_ticket` (
+  `fk_categorie` int(11) NOT NULL,
+  `fk_ticket` int(11) NOT NULL,
+  `import_key` varchar(14) DEFAULT NULL,
+  PRIMARY KEY (`fk_categorie`,`fk_ticket`),
+  KEY `fk_categorie_ticket_ticket_rowid` (`fk_ticket`),
+  CONSTRAINT `fk_categorie_ticket_categorie_rowid` FOREIGN KEY (`fk_categorie`) REFERENCES `llxna_categorie` (`rowid`),
+  CONSTRAINT `fk_categorie_ticket_ticket_rowid` FOREIGN KEY (`fk_ticket`) REFERENCES `llxna_ticket` (`rowid`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `llxna_categorie_user`
 --
 
@@ -8097,6 +8115,49 @@ CREATE TABLE `llxna_supplier_proposaldet_extrafields` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Table structure for table `llxna_ticket`
+--
+
+DROP TABLE IF EXISTS `llxna_ticket`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `llxna_ticket` (
+  `rowid` int(11) NOT NULL AUTO_INCREMENT,
+  `entity` int(11) DEFAULT 1,
+  `ref` varchar(128) NOT NULL,
+  `track_id` varchar(128) NOT NULL,
+  `fk_soc` int(11) DEFAULT 0,
+  `fk_project` int(11) DEFAULT 0,
+  `fk_contract` int(11) DEFAULT 0,
+  `origin_email` varchar(128) DEFAULT NULL,
+  `fk_user_create` int(11) DEFAULT NULL,
+  `fk_user_assign` int(11) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
+  `message` mediumtext DEFAULT NULL,
+  `fk_statut` int(11) DEFAULT NULL,
+  `resolution` int(11) DEFAULT NULL,
+  `progress` int(11) DEFAULT 0,
+  `timing` varchar(20) DEFAULT NULL,
+  `type_code` varchar(32) DEFAULT NULL,
+  `category_code` varchar(32) DEFAULT NULL,
+  `severity_code` varchar(32) DEFAULT NULL,
+  `datec` datetime DEFAULT NULL,
+  `date_read` datetime DEFAULT NULL,
+  `date_last_msg_sent` datetime DEFAULT NULL,
+  `date_close` datetime DEFAULT NULL,
+  `notify_tiers_at_create` tinyint(4) DEFAULT NULL,
+  `email_msgid` varchar(255) DEFAULT NULL,
+  `email_date` datetime DEFAULT NULL,
+  `ip` varchar(250) DEFAULT NULL,
+  `tms` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `import_key` varchar(14) DEFAULT NULL,
+  PRIMARY KEY (`rowid`),
+  UNIQUE KEY `uk_ticket_track_id` (`track_id`),
+  UNIQUE KEY `uk_ticket_ref` (`ref`,`entity`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Table structure for table `llxna_tva`
 --
 
@@ -8461,4 +8522,4 @@ CREATE TABLE `llxna_usergroup_user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-13 16:12:20
+-- Dump completed on 2024-05-14  2:00:12

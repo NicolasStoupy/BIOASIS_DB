@@ -294,7 +294,7 @@ CREATE TABLE `llxna_actioncomm` (
   KEY `idx_actioncomm_percent` (`percent`),
   KEY `idx_actioncomm_ref` (`ref`,`entity`),
   KEY `idx_actioncomm_entity` (`entity`)
-) ENGINE=InnoDB AUTO_INCREMENT=73 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=193 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -359,7 +359,7 @@ CREATE TABLE `llxna_actioncomm_resources` (
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_actioncomm_resources` (`fk_actioncomm`,`element_type`,`fk_element`),
   KEY `idx_actioncomm_resources_fk_element` (`fk_element`)
-) ENGINE=InnoDB AUTO_INCREMENT=82 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=202 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -913,7 +913,7 @@ CREATE TABLE `llxna_boxes` (
   KEY `idx_boxes_boxid` (`box_id`),
   KEY `idx_boxes_fk_user` (`fk_user`),
   CONSTRAINT `fk_boxes_box_id` FOREIGN KEY (`box_id`) REFERENCES `llxna_boxes_def` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -932,7 +932,7 @@ CREATE TABLE `llxna_boxes_def` (
   `note` varchar(130) DEFAULT NULL,
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_boxes_def` (`file`,`entity`,`note`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1248,7 +1248,7 @@ CREATE TABLE `llxna_c_email_senderprofile` (
   `active` tinyint(4) NOT NULL DEFAULT 1,
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_c_email_senderprofile` (`entity`,`label`,`email`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1284,7 +1284,7 @@ CREATE TABLE `llxna_c_email_templates` (
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_c_email_templates` (`entity`,`label`,`lang`),
   KEY `idx_type` (`type_template`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2235,7 +2235,7 @@ CREATE TABLE `llxna_categorie` (
   `fk_user_modif` int(11) DEFAULT NULL,
   `import_key` varchar(14) DEFAULT NULL,
   PRIMARY KEY (`rowid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2675,7 +2675,7 @@ CREATE TABLE `llxna_commande_fournisseur` (
   KEY `idx_commande_fournisseur_fk_soc` (`fk_soc`),
   KEY `billed` (`billed`),
   CONSTRAINT `fk_commande_fournisseur_fk_soc` FOREIGN KEY (`fk_soc`) REFERENCES `llxna_societe` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2710,7 +2710,7 @@ CREATE TABLE `llxna_commande_fournisseur_dispatch` (
   KEY `idx_commande_fournisseur_dispatch_fk_product` (`fk_product`),
   KEY `idx_commande_fournisseur_dispatch_fk_commandefourndet` (`fk_commandefourndet`),
   CONSTRAINT `fk_commande_fournisseur_dispatch_fk_reception` FOREIGN KEY (`fk_reception`) REFERENCES `llxna_reception` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2815,7 +2815,7 @@ CREATE TABLE `llxna_commande_fournisseurdet` (
   KEY `idx_commande_fournisseurdet_fk_commande` (`fk_commande`),
   KEY `idx_commande_fournisseurdet_fk_product` (`fk_product`),
   CONSTRAINT `fk_commande_fournisseurdet_fk_unit` FOREIGN KEY (`fk_unit`) REFERENCES `llxna_c_units` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2892,7 +2892,7 @@ CREATE TABLE `llxna_commandedet` (
   CONSTRAINT `fk_commandedet_fk_commande` FOREIGN KEY (`fk_commande`) REFERENCES `llxna_commande` (`rowid`),
   CONSTRAINT `fk_commandedet_fk_commandefourndet` FOREIGN KEY (`fk_commandefourndet`) REFERENCES `llxna_commande_fournisseurdet` (`rowid`),
   CONSTRAINT `fk_commandedet_fk_unit` FOREIGN KEY (`fk_unit`) REFERENCES `llxna_c_units` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2952,7 +2952,7 @@ CREATE TABLE `llxna_const` (
   `tms` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_const` (`name`,`entity`)
-) ENGINE=InnoDB AUTO_INCREMENT=765 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=935 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3309,7 +3309,7 @@ CREATE TABLE `llxna_document_model` (
   `description` text DEFAULT NULL,
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_document_model` (`nom`,`type`,`entity`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3396,7 +3396,7 @@ CREATE TABLE `llxna_ecm_files` (
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_ecm_files` (`filepath`,`filename`,`entity`),
   KEY `idx_ecm_files_label` (`label`)
-) ENGINE=InnoDB AUTO_INCREMENT=28 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3454,7 +3454,7 @@ CREATE TABLE `llxna_element_contact` (
   KEY `fk_element_contact_fk_c_type_contact` (`fk_c_type_contact`),
   KEY `idx_element_contact_fk_socpeople` (`fk_socpeople`),
   CONSTRAINT `fk_element_contact_fk_c_type_contact` FOREIGN KEY (`fk_c_type_contact`) REFERENCES `llxna_c_type_contact` (`rowid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3473,7 +3473,7 @@ CREATE TABLE `llxna_element_element` (
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `idx_element_element_idx1` (`fk_source`,`sourcetype`,`fk_target`,`targettype`),
   KEY `idx_element_element_fk_target` (`fk_target`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3627,7 +3627,7 @@ CREATE TABLE `llxna_emailcollector_emailcollectorfilter` (
   UNIQUE KEY `uk_emailcollector_emailcollectorfilter` (`fk_emailcollector`,`type`,`rulevalue`),
   KEY `idx_emailcollector_fk_emailcollector` (`fk_emailcollector`),
   CONSTRAINT `fk_emailcollectorfilter_fk_emailcollector` FOREIGN KEY (`fk_emailcollector`) REFERENCES `llxna_emailcollector_emailcollector` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3813,7 +3813,7 @@ CREATE TABLE `llxna_events` (
   `fk_oauth_token` int(11) DEFAULT NULL,
   PRIMARY KEY (`rowid`),
   KEY `idx_events_dateevent` (`dateevent`)
-) ENGINE=InnoDB AUTO_INCREMENT=48 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3932,7 +3932,7 @@ CREATE TABLE `llxna_expeditiondet` (
   KEY `idx_expeditiondet_fk_expedition` (`fk_expedition`),
   KEY `idx_expeditiondet_fk_origin_line` (`fk_origin_line`),
   CONSTRAINT `fk_expeditiondet_fk_expedition` FOREIGN KEY (`fk_expedition`) REFERENCES `llxna_expedition` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3954,7 +3954,7 @@ CREATE TABLE `llxna_expeditiondet_batch` (
   PRIMARY KEY (`rowid`),
   KEY `idx_fk_expeditiondet` (`fk_expeditiondet`),
   CONSTRAINT `fk_expeditiondet_batch_fk_expeditiondet` FOREIGN KEY (`fk_expeditiondet`) REFERENCES `llxna_expeditiondet` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4226,7 +4226,7 @@ CREATE TABLE `llxna_extrafields` (
   `tms` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_extrafields_name` (`name`,`entity`,`elementtype`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4318,7 +4318,7 @@ CREATE TABLE `llxna_facture` (
   CONSTRAINT `fk_facture_fk_soc` FOREIGN KEY (`fk_soc`) REFERENCES `llxna_societe` (`rowid`),
   CONSTRAINT `fk_facture_fk_user_author` FOREIGN KEY (`fk_user_author`) REFERENCES `llxna_user` (`rowid`),
   CONSTRAINT `fk_facture_fk_user_valid` FOREIGN KEY (`fk_user_valid`) REFERENCES `llxna_user` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -4803,7 +4803,7 @@ CREATE TABLE `llxna_facturedet` (
   KEY `fk_facturedet_fk_unit` (`fk_unit`),
   CONSTRAINT `fk_facturedet_fk_facture` FOREIGN KEY (`fk_facture`) REFERENCES `llxna_facture` (`rowid`),
   CONSTRAINT `fk_facturedet_fk_unit` FOREIGN KEY (`fk_unit`) REFERENCES `llxna_c_units` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5385,7 +5385,7 @@ CREATE TABLE `llxna_menu` (
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `idx_menu_uk_menu` (`menu_handler`,`fk_menu`,`position`,`url`,`entity`),
   KEY `idx_menu_menuhandler_type` (`menu_handler`,`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=12260 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12265 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5652,7 +5652,7 @@ CREATE TABLE `llxna_oauth_token` (
   `tms` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `entity` int(11) DEFAULT 1,
   PRIMARY KEY (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5743,7 +5743,7 @@ CREATE TABLE `llxna_paiement` (
   `fk_export_compta` int(11) NOT NULL DEFAULT 0,
   `pos_change` double(24,8) DEFAULT 0.00000000,
   PRIMARY KEY (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5767,7 +5767,7 @@ CREATE TABLE `llxna_paiement_facture` (
   KEY `idx_paiement_facture_fk_paiement` (`fk_paiement`),
   CONSTRAINT `fk_paiement_facture_fk_facture` FOREIGN KEY (`fk_facture`) REFERENCES `llxna_facture` (`rowid`),
   CONSTRAINT `fk_paiement_facture_fk_paiement` FOREIGN KEY (`fk_paiement`) REFERENCES `llxna_paiement` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6446,7 +6446,7 @@ CREATE TABLE `llxna_product_batch` (
   KEY `idx_fk_product_stock` (`fk_product_stock`),
   KEY `idx_batch` (`batch`),
   CONSTRAINT `fk_product_batch_fk_product_stock` FOREIGN KEY (`fk_product_stock`) REFERENCES `llxna_product_stock` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6823,7 +6823,7 @@ CREATE TABLE `llxna_product_stock` (
   KEY `idx_product_stock_fk_entrepot` (`fk_entrepot`),
   CONSTRAINT `fk_entrepot_entrepot_rowid` FOREIGN KEY (`fk_entrepot`) REFERENCES `llxna_entrepot` (`rowid`),
   CONSTRAINT `fk_product_product_rowid` FOREIGN KEY (`fk_product`) REFERENCES `llxna_product` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6902,7 +6902,7 @@ CREATE TABLE `llxna_projet` (
   KEY `idx_projet_fk_statut` (`fk_statut`),
   KEY `idx_projet_fk_opp_status` (`fk_opp_status`),
   CONSTRAINT `fk_projet_fk_soc` FOREIGN KEY (`fk_soc`) REFERENCES `llxna_societe` (`rowid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -6965,7 +6965,7 @@ CREATE TABLE `llxna_projet_task` (
   CONSTRAINT `fk_projet_task_fk_projet` FOREIGN KEY (`fk_projet`) REFERENCES `llxna_projet` (`rowid`),
   CONSTRAINT `fk_projet_task_fk_user_creat` FOREIGN KEY (`fk_user_creat`) REFERENCES `llxna_user` (`rowid`),
   CONSTRAINT `fk_projet_task_fk_user_valid` FOREIGN KEY (`fk_user_valid`) REFERENCES `llxna_user` (`rowid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7599,7 +7599,7 @@ CREATE TABLE `llxna_societe_commerciaux` (
   `import_key` varchar(14) DEFAULT NULL,
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_societe_commerciaux` (`fk_soc`,`fk_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7644,7 +7644,7 @@ CREATE TABLE `llxna_societe_extrafields` (
   `tlphoneip` varchar(20) NOT NULL DEFAULT '0',
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_societe_extrafields` (`fk_object`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7870,7 +7870,7 @@ CREATE TABLE `llxna_socpeople` (
   KEY `idx_socpeople_lastname` (`lastname`),
   CONSTRAINT `fk_socpeople_fk_soc` FOREIGN KEY (`fk_soc`) REFERENCES `llxna_societe` (`rowid`),
   CONSTRAINT `fk_socpeople_user_creat_user_rowid` FOREIGN KEY (`fk_user_creat`) REFERENCES `llxna_user` (`rowid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -7920,7 +7920,7 @@ CREATE TABLE `llxna_stock_mouvement` (
   PRIMARY KEY (`rowid`),
   KEY `idx_stock_mouvement_fk_product` (`fk_product`),
   KEY `idx_stock_mouvement_fk_entrepot` (`fk_entrepot`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=49 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8160,7 +8160,7 @@ CREATE TABLE `llxna_ticket` (
   KEY `idx_ticket_fk_user_assign` (`fk_user_assign`),
   KEY `idx_ticket_fk_project` (`fk_project`),
   KEY `idx_ticket_fk_statut` (`fk_statut`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8304,7 +8304,7 @@ CREATE TABLE `llxna_user` (
   UNIQUE KEY `uk_user_fk_member` (`fk_member`),
   UNIQUE KEY `uk_user_api_key` (`api_key`),
   KEY `idx_user_fk_societe` (`fk_soc`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8452,7 +8452,7 @@ CREATE TABLE `llxna_user_rights` (
   UNIQUE KEY `uk_user_rights` (`entity`,`fk_user`,`fk_id`),
   KEY `fk_user_rights_fk_user_user` (`fk_user`),
   CONSTRAINT `fk_user_rights_fk_user_user` FOREIGN KEY (`fk_user`) REFERENCES `llxna_user` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1323 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1632 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8508,7 +8508,7 @@ CREATE TABLE `llxna_usergroup_rights` (
   UNIQUE KEY `uk_usergroup_rights` (`entity`,`fk_usergroup`,`fk_id`),
   KEY `fk_usergroup_rights_fk_usergroup` (`fk_usergroup`),
   CONSTRAINT `fk_usergroup_rights_fk_usergroup` FOREIGN KEY (`fk_usergroup`) REFERENCES `llxna_usergroup` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=78 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8529,7 +8529,7 @@ CREATE TABLE `llxna_usergroup_user` (
   KEY `fk_usergroup_user_fk_usergroup` (`fk_usergroup`),
   CONSTRAINT `fk_usergroup_user_fk_user` FOREIGN KEY (`fk_user`) REFERENCES `llxna_user` (`rowid`),
   CONSTRAINT `fk_usergroup_user_fk_usergroup` FOREIGN KEY (`fk_usergroup`) REFERENCES `llxna_usergroup` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8545,4 +8545,4 @@ CREATE TABLE `llxna_usergroup_user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-13 16:12:15
+-- Dump completed on 2024-05-14  2:00:08
