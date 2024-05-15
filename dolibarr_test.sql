@@ -913,7 +913,7 @@ CREATE TABLE `llxna_boxes` (
   KEY `idx_boxes_boxid` (`box_id`),
   KEY `idx_boxes_fk_user` (`fk_user`),
   CONSTRAINT `fk_boxes_box_id` FOREIGN KEY (`box_id`) REFERENCES `llxna_boxes_def` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -932,7 +932,7 @@ CREATE TABLE `llxna_boxes_def` (
   `note` varchar(130) DEFAULT NULL,
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_boxes_def` (`file`,`entity`,`note`)
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -2420,7 +2420,8 @@ CREATE TABLE `llxna_categorie_ticket` (
   `fk_ticket` int(11) NOT NULL,
   `import_key` varchar(14) DEFAULT NULL,
   PRIMARY KEY (`fk_categorie`,`fk_ticket`),
-  KEY `fk_categorie_ticket_ticket_rowid` (`fk_ticket`),
+  KEY `idx_categorie_ticket_fk_categorie` (`fk_categorie`),
+  KEY `idx_categorie_ticket_fk_ticket` (`fk_ticket`),
   CONSTRAINT `fk_categorie_ticket_categorie_rowid` FOREIGN KEY (`fk_categorie`) REFERENCES `llxna_categorie` (`rowid`),
   CONSTRAINT `fk_categorie_ticket_ticket_rowid` FOREIGN KEY (`fk_ticket`) REFERENCES `llxna_ticket` (`rowid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -2951,7 +2952,7 @@ CREATE TABLE `llxna_const` (
   `tms` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_const` (`name`,`entity`)
-) ENGINE=InnoDB AUTO_INCREMENT=867 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=897 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3170,7 +3171,7 @@ CREATE TABLE `llxna_cronjob` (
   KEY `idx_cronjob_datenextrun` (`datenextrun`),
   KEY `idx_cronjob_datestart` (`datestart`),
   KEY `idx_cronjob_dateend` (`dateend`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3308,7 +3309,7 @@ CREATE TABLE `llxna_document_model` (
   `description` text DEFAULT NULL,
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_document_model` (`nom`,`type`,`entity`)
-) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3575,7 +3576,7 @@ CREATE TABLE `llxna_emailcollector_emailcollector` (
   UNIQUE KEY `uk_emailcollector_emailcollector_ref` (`ref`,`entity`),
   KEY `idx_emailcollector_entity` (`entity`),
   KEY `idx_emailcollector_status` (`status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3601,7 +3602,7 @@ CREATE TABLE `llxna_emailcollector_emailcollectoraction` (
   UNIQUE KEY `uk_emailcollector_emailcollectoraction` (`fk_emailcollector`,`type`),
   KEY `idx_emailcollector_fk_emailcollector` (`fk_emailcollector`),
   CONSTRAINT `fk_emailcollectoraction_fk_emailcollector` FOREIGN KEY (`fk_emailcollector`) REFERENCES `llxna_emailcollector_emailcollector` (`rowid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3626,7 +3627,7 @@ CREATE TABLE `llxna_emailcollector_emailcollectorfilter` (
   UNIQUE KEY `uk_emailcollector_emailcollectorfilter` (`fk_emailcollector`,`type`,`rulevalue`),
   KEY `idx_emailcollector_fk_emailcollector` (`fk_emailcollector`),
   CONSTRAINT `fk_emailcollectorfilter_fk_emailcollector` FOREIGN KEY (`fk_emailcollector`) REFERENCES `llxna_emailcollector_emailcollector` (`rowid`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -3769,7 +3770,7 @@ CREATE TABLE `llxna_eventorganization_conferenceorboothattendee` (
   KEY `idx_eventorganization_conferenceorboothattendee_fk_project` (`fk_project`),
   KEY `idx_eventorganization_conferenceorboothattendee_email` (`email`),
   KEY `idx_eventorganization_conferenceorboothattendee_status` (`status`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5384,7 +5385,7 @@ CREATE TABLE `llxna_menu` (
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `idx_menu_uk_menu` (`menu_handler`,`fk_menu`,`position`,`url`,`entity`),
   KEY `idx_menu_menuhandler_type` (`menu_handler`,`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=12257 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12265 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8153,8 +8154,30 @@ CREATE TABLE `llxna_ticket` (
   `import_key` varchar(14) DEFAULT NULL,
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_ticket_track_id` (`track_id`),
-  UNIQUE KEY `uk_ticket_ref` (`ref`,`entity`)
+  UNIQUE KEY `uk_ticket_ref` (`ref`,`entity`),
+  KEY `idx_ticket_entity` (`entity`),
+  KEY `idx_ticket_fk_soc` (`fk_soc`),
+  KEY `idx_ticket_fk_user_assign` (`fk_user_assign`),
+  KEY `idx_ticket_fk_project` (`fk_project`),
+  KEY `idx_ticket_fk_statut` (`fk_statut`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `llxna_ticket_extrafields`
+--
+
+DROP TABLE IF EXISTS `llxna_ticket_extrafields`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `llxna_ticket_extrafields` (
+  `rowid` int(11) NOT NULL AUTO_INCREMENT,
+  `tms` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `fk_object` int(11) NOT NULL,
+  `import_key` varchar(14) DEFAULT NULL,
+  PRIMARY KEY (`rowid`),
+  KEY `idx_ticket_extrafields` (`fk_object`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8429,7 +8452,7 @@ CREATE TABLE `llxna_user_rights` (
   UNIQUE KEY `uk_user_rights` (`entity`,`fk_user`,`fk_id`),
   KEY `fk_user_rights_fk_user_user` (`fk_user`),
   CONSTRAINT `fk_user_rights_fk_user_user` FOREIGN KEY (`fk_user`) REFERENCES `llxna_user` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1520 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1632 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8522,4 +8545,4 @@ CREATE TABLE `llxna_usergroup_user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-14  2:00:12
+-- Dump completed on 2024-05-15  2:00:13
