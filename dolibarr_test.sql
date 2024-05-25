@@ -2952,7 +2952,7 @@ CREATE TABLE `llxna_const` (
   `tms` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   PRIMARY KEY (`rowid`),
   UNIQUE KEY `uk_const` (`name`,`entity`)
-) ENGINE=InnoDB AUTO_INCREMENT=897 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=916 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -5331,6 +5331,104 @@ CREATE TABLE `llxna_localtax` (
   `fk_user_modif` int(11) DEFAULT NULL,
   PRIMARY KEY (`rowid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `llxna_mailing`
+--
+
+DROP TABLE IF EXISTS `llxna_mailing`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `llxna_mailing` (
+  `rowid` int(11) NOT NULL AUTO_INCREMENT,
+  `statut` smallint(6) DEFAULT 0,
+  `titre` varchar(128) DEFAULT NULL,
+  `entity` int(11) NOT NULL DEFAULT 1,
+  `sujet` varchar(128) DEFAULT NULL,
+  `body` mediumtext DEFAULT NULL,
+  `bgcolor` varchar(8) DEFAULT NULL,
+  `bgimage` varchar(255) DEFAULT NULL,
+  `evenunsubscribe` smallint(6) DEFAULT 0,
+  `cible` varchar(60) DEFAULT NULL,
+  `nbemail` int(11) DEFAULT NULL,
+  `email_from` varchar(160) DEFAULT NULL,
+  `name_from` varchar(128) DEFAULT NULL,
+  `email_replyto` varchar(160) DEFAULT NULL,
+  `email_errorsto` varchar(160) DEFAULT NULL,
+  `tag` varchar(128) DEFAULT NULL,
+  `date_creat` datetime DEFAULT NULL,
+  `date_valid` datetime DEFAULT NULL,
+  `date_appro` datetime DEFAULT NULL,
+  `date_envoi` datetime DEFAULT NULL,
+  `tms` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `fk_user_creat` int(11) DEFAULT NULL,
+  `fk_user_modif` int(11) DEFAULT NULL,
+  `fk_user_valid` int(11) DEFAULT NULL,
+  `fk_user_appro` int(11) DEFAULT NULL,
+  `extraparams` varchar(255) DEFAULT NULL,
+  `joined_file1` varchar(255) DEFAULT NULL,
+  `joined_file2` varchar(255) DEFAULT NULL,
+  `joined_file3` varchar(255) DEFAULT NULL,
+  `joined_file4` varchar(255) DEFAULT NULL,
+  `note_private` text DEFAULT NULL,
+  `note_public` text DEFAULT NULL,
+  PRIMARY KEY (`rowid`),
+  UNIQUE KEY `uk_mailing` (`titre`,`entity`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `llxna_mailing_advtarget`
+--
+
+DROP TABLE IF EXISTS `llxna_mailing_advtarget`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `llxna_mailing_advtarget` (
+  `rowid` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(180) NOT NULL,
+  `entity` int(11) NOT NULL DEFAULT 1,
+  `fk_element` int(11) NOT NULL,
+  `type_element` varchar(180) NOT NULL,
+  `filtervalue` text DEFAULT NULL,
+  `fk_user_author` int(11) NOT NULL,
+  `datec` datetime NOT NULL,
+  `fk_user_mod` int(11) NOT NULL,
+  `tms` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  PRIMARY KEY (`rowid`),
+  UNIQUE KEY `uk_advtargetemailing_name` (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `llxna_mailing_cibles`
+--
+
+DROP TABLE IF EXISTS `llxna_mailing_cibles`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `llxna_mailing_cibles` (
+  `rowid` int(11) NOT NULL AUTO_INCREMENT,
+  `fk_mailing` int(11) NOT NULL,
+  `fk_contact` int(11) NOT NULL,
+  `lastname` varchar(160) DEFAULT NULL,
+  `firstname` varchar(160) DEFAULT NULL,
+  `email` varchar(160) NOT NULL,
+  `other` varchar(255) DEFAULT NULL,
+  `tag` varchar(64) DEFAULT NULL,
+  `statut` smallint(6) NOT NULL DEFAULT 0,
+  `source_url` varchar(255) DEFAULT NULL,
+  `source_id` int(11) DEFAULT NULL,
+  `source_type` varchar(32) DEFAULT NULL,
+  `date_envoi` datetime DEFAULT NULL,
+  `tms` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `error_text` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`rowid`),
+  UNIQUE KEY `uk_mailing_cibles` (`fk_mailing`,`email`),
+  KEY `idx_mailing_cibles_email` (`email`),
+  KEY `idx_mailing_cibles_tag` (`tag`)
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8452,7 +8550,7 @@ CREATE TABLE `llxna_user_rights` (
   UNIQUE KEY `uk_user_rights` (`entity`,`fk_user`,`fk_id`),
   KEY `fk_user_rights_fk_user_user` (`fk_user`),
   CONSTRAINT `fk_user_rights_fk_user_user` FOREIGN KEY (`fk_user`) REFERENCES `llxna_user` (`rowid`)
-) ENGINE=InnoDB AUTO_INCREMENT=1632 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1702 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -8545,4 +8643,4 @@ CREATE TABLE `llxna_usergroup_user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-05-24  2:00:11
+-- Dump completed on 2024-05-25  2:00:11
